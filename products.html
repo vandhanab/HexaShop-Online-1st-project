@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+    <style>
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: auto;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  border-bottom: 3px dotted #eee;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 20px;
+}
+
+.header img {
+  margin-left: 20px;
+  height: 40px;
+}
+
+.header ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: 20px;
+}
+
+.header ul li {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.header ul li:hover {
+  color: lightslategray;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover a {
+  color: gray;
+}
+
+/* Responsive Media Queries */
+
+/* For tablets and smaller desktops (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .header img {
+    margin: 0 auto;
+    height: 35px;
+  }
+
+  .header ul {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .header ul li {
+    padding: 8px 15px;
+    font-size: 18px;
+  }
+}
+
+/* For mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 10px;
+  }
+
+  .header img {
+    margin: 0;
+    height: 30px;
+  }
+
+  .header ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header ul li {
+    padding: 10px 0;
+    font-size: 18px;
+  }
+}
+
+/* For small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .header img {
+    height: 25px;
+  }
+
+  .header ul li {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+
+  .dropdown-content a {
+    padding: 10px 12px;
+  }
+}
+
+/* Men Section */
+.section {
+  padding: 15px 0;
+  border-bottom: 3px dotted #eee;
+  background-color: #fff; /* Set the entire section background to white */
+  position: relative;
+}
+
+ .section-heading {
+  text-align: center;
+
+}
+
+ .section-heading h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+
+}
+
+ .section-heading span {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Carousel controls */
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333; 
+  color: #fff;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 0px; /* Adjust this value to place button near the middle path */
+}
+
+.next-btn {
+  right: 0px; /* Adjust this value to place button near the middle path */
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #555;
+}
+
+/* Men Items Carousel */
+.men-items-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  position: relative;
+  background-color: #fff; /* Set the carousel container background to white */
+  margin-left: 30px;
+}
+
+.men-items {
+  display: flex;
+  gap: 10px;
+}
+
+.item {
+  width: 300px;
+  background-color: #fff; /* Set item background to white */
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumb {
+  position: relative;
+}
+
+.thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.hover-content {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.thumb:hover .hover-content {
+  bottom: 30px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-content ul {
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.hover-content ul li {
+  margin: 0 10px;
+}
+
+.hover-content ul li a {
+  color: #fff;
+  font-size: 18px;
+} 
+
+.down-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.down-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.down-content span {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.down-content .stars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.down-content .stars li {
+  display: inline-block;
+  color: black;
+  font-size: 14px;
+}
+
+
+/* Media Queries */
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 480px) {
+  .men-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .prev-btn, .next-btn {
+    display: none; /* Hide navigation buttons on mobile */
+  }
+}
+
+/* Tablets (Portrait and Landscape) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .section-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .prev-btn, .next-btn {
+    display: none; /* Hide navigation buttons on tablets if not needed */
+  }
+}
+
+/* Small Laptops and Larger Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .section-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 45%; /* Adjust item width for better fit on medium screens */
+  }
+
+  .prev-btn, .next-btn {
+    display: block;
+  }
+}
+
+/* Laptops and Larger Screens */
+@media (min-width: 1025px) {
+  .section-items {
+    flex-wrap: nowrap;
+  }
+
+  .item {
+    width: 25%; /* Adjust item width for larger screens */
+  }
+
+  .prev-btn, .next-btn {
+    display: block;
+  }
+}
+
+
+
+
+
+/* women Section */
+#women {
+  padding: 15px 0;
+  border-bottom: 3px dotted #eee;
+  background-color: #fff; /* Set the entire section background to white */
+  position: relative;
+}
+
+#wommen .section-heading {
+  text-align: center;
+
+}
+
+#women .section-heading h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+
+}
+
+#women .section-heading span {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Carousel controls */
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333; 
+  color: #fff;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 0px; /* Adjust this value to place button near the middle path */
+}
+
+.next-btn {
+  right: 10px; /* Adjust this value to place button near the middle path */
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #555;
+}
+
+/* women Items Carousel */
+.women-items-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  position: relative;
+  background-color: #fff; 
+  margin-left: 50px;
+}
+
+.women-items {
+  display: flex;
+  gap: 10px;
+}
+
+.item {
+  width: 300px;
+  background-color: #fff; 
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumb {
+  position: relative;
+}
+
+.thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.hover-content {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.thumb:hover .hover-content {
+  bottom: 30px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-content ul {
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.hover-content ul li {
+  margin: 0 10px;
+}
+
+.hover-content ul li a {
+  color: #fff;
+  font-size: 18px;
+} 
+
+.down-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.down-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.down-content span {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.down-content .stars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.down-content .stars li {
+  display: inline-block;
+  color: black;
+  font-size: 14px;
+}
+
+
+/* Media Queries */
+
+/* Mobile Devices (Portrait) */
+@media (max-width: 480px) {
+  .women-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .prev-btn, .next-btn {
+    display: none; /* Hide navigation buttons on mobile */
+  }
+}
+
+/* Tablets (Portrait and Landscape) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .women-items {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .item {
+    width: 100%;
+    max-width: 300px;
+    margin: 10px 0;
+  }
+
+  .prev-btn, .next-btn {
+    display: none; /* Hide navigation buttons on tablets if not needed */
+  }
+}
+
+/* Small Laptops and Larger Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .women-items {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .item {
+    width: 45%; /* Adjust item width for better fit on medium screens */
+  }
+
+  .prev-btn, .next-btn {
+    display: block;
+  }
+}
+
+/* Laptops and Larger Screens */
+@media (min-width: 1025px) {
+  .women-items {
+    flex-wrap: nowrap;
+  }
+
+  .item {
+    width: 25%; /* Adjust item width for larger screens */
+  }
+
+  .prev-btn, .next-btn {
+    display: block;
+  }
+}
+
+
+
+
+/* Kids Section */
+#kids {
+  border-bottom: 3px dotted #eee;
+  padding: 15px 0;
+  background-color: #fff;
+  position: relative;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+}
+
+.section-heading span {
+  font-size: 16px;
+  color: #777;
+}
+
+/* Carousel Controls */
+.prev-btn, .next-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 15px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.prev-btn {
+  left: 0;
+}
+
+.next-btn {
+  right: 0;
+}
+
+.prev-btn:hover, .next-btn:hover {
+  background-color: #555;
+}
+
+/* Kids Items Carousel */
+.kids-items-container {
+  overflow-x: auto;
+  white-space: nowrap;
+  scroll-behavior: smooth;
+  padding: 0 30px;
+  position: relative;
+}
+
+.kids-items {
+  display: flex;
+  gap: 20px;
+}
+
+.item {
+  min-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumb {
+  position: relative;
+}
+
+.thumb img {
+  width: 100%;
+  height: auto;
+}
+
+.hover-content {
+  position: absolute;
+  bottom: -60px;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.thumb:hover .hover-content {
+  bottom: 30px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.hover-content ul {
+  padding: 10px;
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+.hover-content ul li {
+  margin: 0 10px;
+}
+
+.hover-content ul li a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.down-content {
+  padding: 20px;
+  text-align: center;
+}
+
+.down-content h4 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.down-content span {
+  font-size: 16px;
+  color: #999;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.down-content .stars {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.down-content .stars li {
+  display: inline-block;
+  color: black;
+  font-size: 14px;
+}
+/* Default Styles (for larger screens) */
+/* Already written above */
+
+/* Media Queries */
+
+/* Large screens (up to 1200px) */
+@media (max-width: 1200px) {
+  .item {
+    min-width: 250px;
+  }
+  
+  .prev-btn, .next-btn {
+    padding: 10px;
+  }
+
+  .hover-content ul li a {
+    font-size: 16px;
+  }
+
+  .down-content h4 {
+    font-size: 16px;
+  }
+
+  .down-content span {
+    font-size: 14px;
+  }
+
+  .down-content .stars li {
+    font-size: 12px;
+  }
+}
+
+/* Medium screens (tablets, small laptops) */
+@media (max-width: 992px) {
+  .kids-items-container {
+    padding: 0 20px;
+  }
+
+  .item {
+    min-width: 220px;
+  }
+
+  .prev-btn, .next-btn {
+    padding: 8px;
+  }
+
+  .hover-content {
+    bottom: -50px;
+  }
+
+  .hover-content ul li a {
+    font-size: 14px;
+  }
+
+  .down-content h4 {
+    font-size: 14px;
+  }
+
+  .down-content span {
+    font-size: 13px;
+  }
+
+  .down-content .stars li {
+    font-size: 11px;
+  }
+}
+
+/* Small screens (mobile devices) */
+@media (max-width: 768px) {
+  .kids-items-container {
+    padding: 0 15px;
+  }
+
+  .kids-items {
+    gap: 15px;
+  }
+
+  .item {
+    min-width: 180px;
+  }
+
+  .prev-btn, .next-btn {
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .hover-content {
+    bottom: -40px;
+  }
+
+  .hover-content ul li a {
+    font-size: 12px;
+  }
+
+  .down-content h4 {
+    font-size: 13px;
+  }
+
+  .down-content span {
+    font-size: 12px;
+  }
+
+  .down-content .stars li {
+    font-size: 10px;
+  }
+}
+
+/* Extra small screens (small mobile devices) */
+@media (max-width: 576px) {
+  .kids-items-container {
+    padding: 0 10px;
+  }
+
+  .item {
+    min-width: 150px;
+  }
+
+  .prev-btn, .next-btn {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .hover-content {
+    bottom: -30px;
+  }
+
+  .hover-content ul li a {
+    font-size: 10px;
+  }
+
+  .down-content h4 {
+    font-size: 12px;
+  }
+
+  .down-content span {
+    font-size: 11px;
+  }
+
+  .down-content .stars li {
+    font-size: 9px;
+  }
+}
+
+
+
+/* General Styling */
+
+.explore {
+  border-bottom: 3px dotted #eee;
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+#explore .content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.left-content {
+  width: 45%;
+}
+
+.left-content h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.left-content span {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 20px;
+}
+
+.left-content .quote {
+  background: #f5f5f5;
+  padding: 15px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.left-content .quote i {
+  font-size: 24px;
+  margin-right: 10px;
+}
+
+.left-content p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.left-content .main-border-button a {
+  padding: 10px 20px;
+  border: 2px solid #333;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+
+.left-content .main-border-button a:hover {
+  background: #333;
+  color: #fff;
+}
+
+/* Right Content (Images) */
+.right-content {
+  width: 45%; /* Adjust width to fit 4 image boxes */
+}
+
+.image-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.image-box {
+  position: relative;
+  text-align: center;
+  background-color: #f8f8f8;
+  padding: 10px;
+}
+
+.image-box h4 {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.image-box span {
+  font-size: 14px;
+  font-style: italic;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.image-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .social area {
+      flex-direction: column;
+  }
+
+  .left-content, .right-content {
+      width: 100%;
+  }
+
+  .image-container {
+      grid-template-columns: 1fr;
+  }
+}
+
+
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+#social {
+  border-bottom: 3px dotted #eee;
+  max-width: 1200px;
+  margin-top:  0 auto;
+  padding: 40px;
+}
+
+.section-heading h2 {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.section-heading span {
+  display: block;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Social Media Section */
+.images {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between images */
+}
+
+.col-2 {
+  flex: 1;
+  min-width: calc(33.333% - 20px); /* 3 images per row with gap */
+  position: relative;
+}
+
+.thumb {
+   position: relative; 
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+} 
+
+.thumb:hover {
+  transform: scale(1.05);
+} 
+
+.thumb img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 5px;
+}
+
+.icon {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.thumb:hover .icon {
+  opacity: 1;
+}
+
+.icon a {
+  color: #fff;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon h6 {
+  margin: 0;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.icon i {
+  font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .col-2 {
+    min-width: calc(50% - 20px); /* 2 images per row on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .col-2 {
+    min-width: 100%; /* 1 image per row on very small screens */
+  }
+}
+
+
+/* General Styling */
+body {
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Subscribe Section */
+.subscribe {
+  margin-top: 90px;
+}
+
+.subscribe-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.subscribe-form {
+  flex: 1;
+  max-width: 50%;
+  padding-right: 20px;
+}
+
+.subscribe .section-heading {
+  margin-bottom: 30px;
+}
+
+.subscribe .section-heading h2 {
+  line-height: 55px;
+}
+
+/* Form Styles */
+.subscribe form input {
+  width: calc(100% - 30px); /* Adjust for padding and borders */
+  height: 44px;
+  line-height: 44px;
+  padding: 0 15px;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: #aaa;
+  border-radius: 0;
+  border: 1px solid #7a7a7a;
+  box-shadow: none;
+}
+
+.subscribe form input:focus {
+  border-color: #2a2a2a;
+  border-radius: 0;
+}
+
+.subscribe form button {
+  width: 100%;
+  height: 44px;
+  display: inline-block;
+  text-align: center;
+  line-height: 44px;
+  background-color: #2a2a2a;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.subscribe form button:hover {
+  background-color: #fff;
+  border: 1px solid #2a2a2a;
+  color: #2a2a2a;
+}
+
+/* Contact Info Styles */
+.contact-info {
+  border-bottom: 3px dotted #eee;
+  flex: 1;
+  max-width: 45%;
+  padding-left: 20px;
+}
+
+.contact-info .section-heading {
+  margin-bottom: 30px;
+}
+
+.contact-info ul {
+  list-style: none;
+  padding:0;
+  margin: 40px;
+}
+
+.contact-info ul li {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #2a2a2a;
+}
+
+.contact-info ul li span,
+.contact-info ul li span a {
+  font-size: 20px;
+  font-weight: 400;
+  color: #aaa;
+}
+
+.contact-info ul li span a:hover {
+  color: #2a2a2a;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .subscribe-content {
+    flex-direction: column;
+  }
+
+  .subscribe-form, .contact-info {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .contact-info {
+    margin-top: 20px;
+  }
+}
+
+/* Footer Styling */
+footer {
+  margin-top: 60px;
+  padding: 60px 0 30px;
+  background-color: #2a2a2a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Pushes the last item to the bottom */
+}
+
+footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+footer .row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+footer .col-lg-3 {
+  flex: 1;
+  min-width: 200px;
+  margin-bottom: 20px;
+}
+
+footer h4 {
+  letter-spacing: 0.5px;
+  font-size: 16px;
+  color: #fff;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+footer ul li {
+  margin-bottom: 10px;
+}
+
+footer ul li a {
+  font-size: 14px;
+  color: #fff;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+footer ul li a:hover {
+  color: #aaa;
+}
+
+footer .under-footer {
+  margin-top: 30px;
+  padding-top: 30px;
+  text-align: center;
+  border-top: 1px solid rgba(250, 250, 250, 0.3);
+}
+
+footer .under-footer ul {
+  margin-top: 20px;
+  padding: 0;
+}
+
+footer .under-footer ul li {
+  display: inline-block;
+  margin: 0 10px;
+}
+
+footer .under-footer ul li a {
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+}
+
+footer .under-footer p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+footer .under-footer a {
+  color: #cff;
+}
+
+footer .under-footer a:hover {
+  color: #c66;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  footer .col-lg-3 {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
+
+    </style>
+</head>
+
+<body>
+    <div class="header">
+
+        <img src="./logo.png" alt="" width="150px" height="50px">
+        
+        <ul type="none">
+            <li style="color: lightslategray;"><a href="">Home</a></li>
+            <li><a href="#Men">Mens</a></li>
+            <li><a href="#women">Womens</a></li>
+            <li><a href="#kids">Kids</a></li>
+            <li class="dropdown">
+                <a href="#">Pages </a>
+                <div class="dropdown-content">
+                    <a href="products.html">Products</a>
+                    <a href="contact.html">contact</a>
+                    <a href="#">Page 3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#social">Features &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="#social">Feature 1</a>
+                    <a href="#social">Feature 2</a>
+                    <a href="#social">Feature 3</a>
+                </div>
+            </li>
+            <li><a href="#explore">Explore</a></li>
+        </ul>
+    </div>
+        <!-- ***** Header Area End ***** -->
+
+        
+
+        <!-- ***** Men Area Starts ***** -->
+        <section class="section" id="men">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Men's Latest</h2>
+                    <span>Details to details is what makes Hexashop different from the other themes.</span>
+                </div>
+
+                <!-- Men Items Carousel -->
+                <div class="men-items-container">
+                    <div class="men-items">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="men-01.jpg" alt="Men Item 1">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Classic Spring</h4>
+                                <span>$120.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="men-02.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Air Force 1 X</h4>
+                                <span>$90.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="men-03.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Air Force 1 X</h4>
+                                <span>$90.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="men-01.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Air Force 1 X</h4>
+                                <span>$90.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Add more .item elements as needed -->
+                    </div>
+                </div>
+
+                <!-- Carousel controls -->
+                <button class="prev-btn" onclick="document.querySelector('.men-items').scrollLeft -= 300;">❮</button>
+                <button class="next-btn" onclick="document.querySelector('.men-items').scrollLeft += 300;">❯</button>
+            </div>
+        </section>
+
+
+        <!-- Women Area Starts -->
+        <section class="section" id="women">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Women's Latest</h2>
+                    <span>Details to details is what makes Hexashop different from the other themes.</span>
+                </div>
+
+                <!-- Women Items Carousel -->
+                <div class="women-items-container">
+                    <div class="women-items">
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="women-01.jpg" alt="Men Item 1">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>New Green Jacket</h4>
+                                <span>$150.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="women-02.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Classic Dress</h4>
+                                <span>$200.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="women-03.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>Spring Collection</h4>
+                                <span>$100.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="thumb">
+                                <img src="women-01.jpg" alt="Men Item 2">
+                                <div class="hover-content">
+                                    <ul>
+                                        <li><a href="single-product.html">👁️</a></li>
+                                        <li><a href="single-product.html">⭐</a></li>
+                                        <li><a href="single-product.html">🛒</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="down-content">
+                                <h4>New Green Jacket</h4>
+                                <span>$150.00</span>
+                                <ul class="stars">
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                    <li>⭐</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- Add more .item elements as needed -->
+                    </div>
+                </div>
+
+                <!-- Carousel controls -->
+                <button class="prev-btn" onclick="document.querySelector('.men-items').scrollLeft -= 300;">❮</button>
+                <button class="next-btn" onclick="document.querySelector('.men-items').scrollLeft += 300;">❯</button>
+            </div>
+        </section>
+
+
+
+
+        <!-- ***** Women Area Ends ***** -->
+
+        <!-- ***** Kids Area Starts ***** -->
+        <section class="section" id="kids">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="section-heading">
+                            <h2>Kid's Latest</h2>
+                            <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="kids-items-container">
+                            <div class="kids-items">
+                                <!-- Item 1 -->
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="single-product.html">👁️</a></li>
+                                                <li><a href="single-product.html">⭐</a></li>
+                                                <li><a href="single-product.html">🛒</a></li>
+                                            </ul>
+                                        </div>
+                                        <img src="kid-01.jpg" alt="School Collection">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>School Collection</h4>
+                                        <span>$80.00</span>
+                                        <ul class="stars">
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Item 2 -->
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="single-product.html">👁️</a></li>
+                                                <li><a href="single-product.html">⭐</a></li>
+                                                <li><a href="single-product.html">🛒</a></li>
+                                            </ul>
+                                        </div>
+                                        <img src="kid-02.jpg" alt="Summer Cap">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>Summer Cap</h4>
+                                        <span>$12.00</span>
+                                        <ul class="stars">
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Item 3 -->
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="single-product.html">👁️</a></li>
+                                                <li><a href="single-product.html">⭐</a></li>
+                                                <li><a href="single-product.html">🛒</a></li>
+                                            </ul>
+                                        </div>
+                                        <img src="kid-03.jpg" alt="Classic Spring">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>Classic Spring</h4>
+                                        <span>$120.00</span>
+                                        <ul class="stars">
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <div class="hover-content">
+                                            <ul>
+                                                <li><a href="single-product.html">👁️</a></li>
+                                                <li><a href="single-product.html">⭐</a></li>
+                                                <li><a href="single-product.html">🛒</a></li>
+                                            </ul>
+                                        </div>
+                                        <img src="kid-01.jpg" alt="Classic Spring">
+                                    </div>
+                                    <div class="down-content">
+                                        <h4>Classic Spring</h4>
+                                        <span>$120.00</span>
+                                        <ul class="stars">
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                            <li>⭐</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel controls -->
+                <button class="prev-btn" onclick="document.querySelector('.kids-items').scrollLeft -= 300;">❮</button>
+                <button class="next-btn" onclick="document.querySelector('.kids-items').scrollLeft += 300;">❯</button>
+            </div>
+        </section>
+
+
+        <!-- ***** Explore Area Starts ***** -->
+        <section class="section" id="explore">
+            <div class="explore">
+                <div class="content">
+                    <!-- Left Content (Text) -->
+                    <div class="left-content">
+                        <h2>Explore Our Products</h2>
+                        <span>You are allowed to use this HexaShop HTML CSS template. You can feel free to modify or
+                            edit this layout. You can convert this template as any kind of ecommerce CMS theme as you
+                            wish.</span>
+                        <div class="quote">
+                            <i class="fa fa-quote-left"></i>
+                            <p>You are not allowed to redistribute this template ZIP file on any other website.</p>
+                        </div>
+                        <p>There are 5 pages included in this HexaShop Template, and we are providing it to you for
+                            absolutely free of charge at our TemplateMo website. There are web development costs for us.
+                        </p>
+                        <p>If this template is beneficial for your website or business, please kindly <a
+                                href="https://paypal.me/templatemo" target="_blank">support us</a> a little via PayPal.
+                            Please also tell your friends about our great website. Thank you.</p>
+                        <div class="main-border-button">
+                            <a href="products.html">Discover More</a>
+                        </div>
+                    </div>
+                    <!-- Right Content (Images) -->
+                    <div class="right-content">
+                        <div class="image-container">
+                            <div class="image-box">
+                                <h3>Leather Bags</h3>
+                                <span>Latest Collection</span>
+                            </div>
+                            <div class="image-box">
+                                <img src="explore-image-01.jpg" alt="Fashion Model">
+                            </div>
+                            <div class="image-box">
+                                <img src="explore-image-02.jpg">
+                            </div>
+                            <div class="image-box">
+                                <h3>Different Types</h3>
+                                <span>Over 304 Products</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ***** Explore Area Ends ***** -->
+
+        <!-- ***** Social Area Starts ***** -->
+        <section class="section" id="social">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <h2>Social Media</h2>
+                            <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row images">
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>Fashion</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-01.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>New</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-02.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>Brand</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-03.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>Makeup</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-04.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>Leather</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-05.jpg" alt="">
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="thumb">
+                            <div class="icon">
+                                <a href="http://instagram.com">
+                                    <h6>Bag</h6>
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                            </div>
+                            <img src="instagram-06.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ***** Social Area Ends ***** -->
+
+        <!-- ***** Subscribe Area Starts ***** -->
+        <div class="subscribe">
+            <div class="container">
+                <div class="subscribe-content">
+                    <!-- Subscribe Form Section -->
+                    <div class="subscribe-form">
+                        <div class="section-heading">
+                            <h1>By Subscribing To Our Newsletter You Can Get 30% Off</h1>
+                            <span>Details to details is what makes Hexashop different from the other themes.</span>
+                        </div>
+                        <form id="subscribe" action="" method="get">
+                            <div class="row">
+                                <div class="col-lg-5">
+                                    <label for="name">Name:</label>
+                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
+                                </div>
+                                <br>
+                                <div class="col-lg-5">
+                                    <label for="email">Email:</label>
+                                    <input type="email" id="email" name="email" placeholder="Your Email Address"
+                                        required>
+                                </div>
+                                <br>
+                                <div class="col-lg-2">
+                                    <button type="submit" id="form-submit" class="main-dark-button">Send
+                                        Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Contact Info Section -->
+                    <div class="contact-info">
+                        <div class="section-heading">
+                            <h1>Contact Information</h1>
+                        </div>
+                        <ul>
+                            <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                            <li>Phone:<br><span>010-020-0340</span></li>
+                            <li>Office Location:<br><span>North Miami Beach</span></li>
+                        </ul>
+                        <ul>
+                            <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                            <li>Email:<br><span>info@company.com</span></li>
+                            <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a
+                                        href="#">Behance</a>, <a href="#">LinkedIn</a></span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ***** Subscribe Area Ends ***** -->
+
+        <!-- ***** Footer Start ***** -->
+
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="first-item">
+                            <div class="logo">
+                                <img src="white-logo.png" alt="hexashop ecommerce templatemo">
+                            </div>
+                            <ul>
+                                <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                                <li><a href="#">hexashop@company.com</a></li>
+                                <li><a href="#">010-020-0340</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Shopping &amp; Categories</h4>
+                        <ul>
+                            <li><a href="#">Men’s Shopping</a></li>
+                            <li><a href="#">Women’s Shopping</a></li>
+                            <li><a href="#">Kid's Shopping</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Useful Links</h4>
+                        <ul>
+                            <li><a href="#">Homepage</a></li>
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-3">
+                        <h4>Help &amp; Information</h4>
+                        <ul>
+                            <li><a href="#">Help</a></li>
+                            <li><a href="#">FAQ's</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Tracking ID</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="under-footer">
+                <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
+                    <br>Design: <a href="https://templatemo.com" target="_parent"
+                        title="free css templates">TemplateMo</a>
+                    <br>Distributed By: <a href="https://themewagon.com" target="_blank"
+                        title="free & premium responsive templates">ThemeWagon</a>
+                </p>
+                <ul>
+                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                    <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                </ul>
+            </div>
+        </footer>
+    </body>
+
+    </html>
+
+    <!-- ***** Footer Ends ***** -->

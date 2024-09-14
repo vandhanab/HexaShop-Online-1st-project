@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project1</title>
+    <link rel="stylesheet" href="./about.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script> 
+</head>
+<style>
+            * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: auto;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  border-bottom: 3px dotted #eee;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 20px;
+}
+
+.header img {
+  margin-left: 20px;
+  height: 40px;
+}
+
+.header ul {
+  list-style-type: none;
+  display: flex;
+  margin-right: 20px;
+}
+
+.header ul li {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 20px;
+}
+
+.header ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.header ul li:hover {
+  color: lightslategray;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  min-width: 160px;
+  z-index: 1;
+}
+
+.dropdown-content a {
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  color: black;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover a {
+  color: gray;
+}
+
+/* Responsive Media Queries */
+
+/* For tablets and smaller desktops (768px - 1024px) */
+@media (max-width: 1024px) {
+  .header {
+    flex-direction: column;
+    height: auto;
+    padding: 10px 20px;
+  }
+
+  .header img {
+    margin: 0 auto;
+    height: 35px;
+  }
+
+  .header ul {
+    margin: 0;
+    padding: 10px 0;
+  }
+
+  .header ul li {
+    padding: 8px 15px;
+    font-size: 18px;
+  }
+}
+
+/* For mobile devices (max-width: 768px) */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    padding: 10px;
+  }
+
+  .header img {
+    margin: 0;
+    height: 30px;
+  }
+
+  .header ul {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .header ul li {
+    padding: 10px 0;
+    font-size: 18px;
+  }
+}
+
+/* For small devices (max-width: 480px) */
+@media (max-width: 480px) {
+  .header img {
+    height: 25px;
+  }
+
+  .header ul li {
+    font-size: 16px;
+    padding: 8px 0;
+  }
+
+  .dropdown-content a {
+    padding: 10px 12px;
+  }
+}
+
+.contact-us {
+  margin-top: 90px;
+  border-bottom: 3px dotted #eee;
+  padding-bottom: 90px;
+}
+
+.contact-us .section-heading {
+  margin-bottom: 40px;
+}
+
+.contact-us #map {
+  margin-right: 30px;
+}
+
+.contact-us form input {
+  width: 100%;
+  height: 44px;
+  line-height: 44px;
+  padding: 0px 15px;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: #aaa;
+  border-radius: 0px;
+  border: 1px solid #7a7a7a;
+  box-shadow: none;
+}
+
+.contact-us form input::focus {
+  border-color: #2a2a2a;
+  border-radius: 0px;
+}
+
+.contact-us form textarea {
+  width: 100%;
+  height: 140px;
+  min-height: 120px;
+  max-height: 200px;
+  margin-top: 30px;
+  margin-bottom: 25px;
+  line-height: 44px;
+  padding: 0px 15px;
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 500;
+  color: #aaa;
+  border-radius: 0px;
+  border: 1px solid #7a7a7a;
+  box-shadow: none;
+}
+
+.contact-us form textarea::focus {
+  border-color: #2a2a2a;
+  border-radius: 0px;
+}
+
+.contact-us form button {
+  width: 44px;
+  height: 44px;
+  display: inline-block;
+  text-align: center;
+  line-height: 44px;
+  background-color: #2a2a2a;
+  box-shadow: none;
+  border: 1px solid transparent;
+  color: #fff;
+  transition: all 0.3s;
+}
+
+.contact-us form button:hover {
+  background-color: #fff;
+  border: 1px solid #2a2a2a;
+  color: #2a2a2a;
+}
+
+
+/* 
+---------------------------------------------
+responsive
+--------------------------------------------- 
+*/
+
+@media (max-width: 1200px) {
+  .main-banner .right-content .right-first-image .thumb .hover-content p {
+    display: none;
+  }
+}
+
+@media (max-width: 992px) {
+  .main-banner .right-content .right-first-image .thumb .hover-content p {
+    display: block;
+  }
+  .header-area .main-nav .nav li.submenu:after {
+    right: 3px;
+  }
+  .header-area .main-nav .nav li.submenu {
+    padding-right: 15px;
+  }
+  .header-area .main-nav .nav li {
+    padding-right: 5px;
+    padding-left: 5px;
+  }
+  .header-area .main-nav .nav li a {
+    font-size: 14px;
+    letter-spacing: 0px;
+  }
+  .main-banner .left-content {
+    margin-bottom: 30px;
+  }
+  #explore .left-content {
+    margin-bottom: 30px;
+  }
+  #explore .right-content .types {
+    margin-top: 30px;
+  }
+  .subscribe input {
+    margin-bottom: 15px;
+  }
+  .subscribe form {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .about-us .right-content {
+    margin-left: 0px;
+    margin-top: 30px;
+  }
+  .our-team .team-item {
+    margin-bottom: 30px;
+  }
+  .our-services .service-item {
+    margin-bottom: 30px;
+  }
+  .contact-us #map {
+    margin-right: 0px;
+    margin-bottom: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-banner .left-content .thumb .inner-content {
+    left: 50%;
+    top: 47.5%;
+    transform: translate(-50%,-50%);
+    text-align: center;
+  }
+  .subscribe form button {
+    width: 100%;
+  }
+  footer {
+    text-align: center;
+  }
+  footer h4 {
+    margin-top: 30px;
+  }
+}
+
+</style>
+<body>
+    <div class="header">
+
+        <img src="./logo.png" alt="" width="150px" height="50px">
+
+        <ul type="none">
+            <li style="color: lightslategray;"><a href="">Home</a></li>
+            <li><a href="#Men">Mens</a></li>
+            <li><a href="#women">Womens</a></li>
+            <li><a href="#kids">Kids</a></li>
+            <li class="dropdown">
+                <a href="#">Pages</a>
+                <div class="dropdown-content">
+                    <a href="products.html">products</a>
+                    <a href="#">Page 2</a>
+                    <a href="#">Page 3</a>
+                </div>
+            </li>
+            <li class="dropdown">
+                <a href="#social">Features &#9662;</a>
+                <div class="dropdown-content">
+                    <a href="#social">Feature 1</a>
+                    <a href="#social">Feature 2</a>
+                    <a href="#social">Feature 3</a>
+                </div>
+            </li>
+            <li><a href="#explore">Explore</a></li>
+        </ul>
+    </div>
+        <!-- ***** Header Area End ***** -->
+             <!-- ***** Main Banner Area Start ***** -->
+    <div class="page-heading about-page-heading" id="top">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="inner-content">
+                        <h1>Contact Us</h1>
+                        <span>Awesome, clean &amp; creative HTML5 Template</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Main Banner Area End ***** -->
+
+      <!-- ***** Contact Area Starts ***** -->
+      <div class="contact-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div id="map">
+                      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d90186.37207676383!2d-80.13495239500924!3d25.9317678710111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88d9ad1877e4a82d%3A0xa891714787d1fb5e!2sPier%20Park!5e1!3m2!1sen!2sth!4v1637512439384!5m2!1sen!2sth" width="100%" height="400px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                      <!-- You can simply copy and paste "Embed a map" code from Google Maps for any location. -->
+                      
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <h2>Say Hello. Don't Be Shy!</h2>
+                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    </div>
+                    <form id="contact" action="" method="post">
+                        <div class="row">
+                          <div class="col-lg-6">
+                            <fieldset>
+                              <input name="name" type="text" id="name" placeholder="Your name" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-6">
+                            <fieldset>
+                              <input name="email" type="text" id="email" placeholder="Your email" required="">
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              <textarea name="message" rows="6" id="message" placeholder="Your message" required=""></textarea>
+                            </fieldset>
+                          </div>
+                          <div class="col-lg-12">
+                            <fieldset>
+                              <button type="submit" id="form-submit" class="main-dark-button"><i class="fa fa-paper-plane"></i></button>
+                          </div>
+                        </div>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </div>
+     <!-- ***** Subscribe Area Starts ***** -->
+     <div class="subscribe">
+        <div class="container">
+            <div class="subscribe-content">
+                <!-- Subscribe Form Section -->
+                <div class="subscribe-form">
+                    <div class="section-heading">
+                        <h1>By Subscribing To Our Newsletter You Can Get 30% Off</h1>
+                        <span>Details to details is what makes Hexashop different from the other themes.</span>
+                    </div>
+                    <form id="subscribe" action="" method="get">
+                        <div class="row">
+                            <div class="col-lg-5">
+                                <label for="name">Name:</label>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                            </div>
+                            <br>
+                            <div class="col-lg-5">
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" placeholder="Your Email Address"
+                                    required>
+                            </div>
+                            <br>
+                            <div class="col-lg-2">
+                                <button type="submit" id="form-submit" class="main-dark-button">Send
+                                    Message</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!-- Contact Info Section -->
+                <div class="contact-info">
+                    <div class="section-heading">
+                        <h1>Contact Information</h1>
+                    </div>
+                    <ul>
+                        <li>Store Location:<br><span>Sunny Isles Beach, FL 33160, United States</span></li>
+                        <li>Phone:<br><span>010-020-0340</span></li>
+                        <li>Office Location:<br><span>North Miami Beach</span></li>
+                    </ul>
+                    <ul>
+                        <li>Work Hours:<br><span>07:30 AM - 9:30 PM Daily</span></li>
+                        <li>Email:<br><span>info@company.com</span></li>
+                        <li>Social Media:<br><span><a href="#">Facebook</a>, <a href="#">Instagram</a>, <a
+                                    href="#">Behance</a>, <a href="#">LinkedIn</a></span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ***** Subscribe Area Ends ***** -->
+
+    <!-- ***** Footer Start ***** -->
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="first-item">
+                        <div class="logo">
+                            <img src="white-logo.png" alt="hexashop ecommerce templatemo">
+                        </div>
+                        <ul>
+                            <li><a href="#">16501 Collins Ave, Sunny Isles Beach, FL 33160, United States</a></li>
+                            <li><a href="#">hexashop@company.com</a></li>
+                            <li><a href="#">010-020-0340</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Shopping &amp; Categories</h4>
+                    <ul>
+                        <li><a href="#">Men’s Shopping</a></li>
+                        <li><a href="#">Women’s Shopping</a></li>
+                        <li><a href="#">Kid's Shopping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><a href="#">Homepage</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <h4>Help &amp; Information</h4>
+                    <ul>
+                        <li><a href="#">Help</a></li>
+                        <li><a href="#">FAQ's</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Tracking ID</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="under-footer">
+            <p>Copyright © 2022 HexaShop Co., Ltd. All Rights Reserved.
+                <br>Design: <a href="https://templatemo.com" target="_parent"
+                    title="free css templates">TemplateMo</a>
+                <br>Distributed By: <a href="https://themewagon.com" target="_blank"
+                    title="free & premium responsive templates">ThemeWagon</a>
+            </p>
+            <ul>
+                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                <li><a href="#"><i class="fa fa-behance"></i></a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+
+</html>
+
+<!-- ***** Footer Ends ***** -->
